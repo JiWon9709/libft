@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <libft.h>
 
-void ft_memset(void *ptr, int value, size_t num)
+void *ft_memset(void *ptr, int value, size_t num)
 {
     size_t i;
     char *c;
