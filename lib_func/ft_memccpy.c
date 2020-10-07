@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.c                                           :+:      :+:    :+:   */
+/*   memccpy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <jyou@student.42.kr>                  +#+  +:+       +#+        */
+/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 01:11:53 by jyou              #+#    #+#             */
-/*   Updated: 2020/09/30 01:11:53 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/07 15:34:39 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/07 15:44:48 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void *ft_memset(void *ptr, int value, size_t num)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-    size_t i;
-    char *c;
-    
-    c = ptr;
-    i = 0;
-    while (i < num)
-    {
-        *(c++) = value;
-        i++;
-    }
+	char		*c;
+	const char	*cc;
+	size_t		i;
+
+	c = dest;
+	cc = src;
+	i = 0;
+	while (i < n)
+	{
+		*(c++) = *(cc++);
+		if (*cc == c)
+		{
+			*(c++) = *(cc++);
+			return (dest);
+		}
+	}
+	return (NULL);
 }

@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   toupper.c                                          :+:      :+:    :+:   */
+/*   memmove.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <jyou@student.42.kr>                  +#+  +:+       +#+        */
+/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 01:12:39 by jyou              #+#    #+#             */
-/*   Updated: 2020/09/30 01:12:39 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/07 15:39:50 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/07 15:50:07 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 
-int ft_toupper(int c)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-    if (c <= 122 && c >= 97)
-        return (c - 32);
-    else
-        return (c);
+	char		*c;
+	const char	*cc;
+	size_t		i;
+
+	c = dest;
+	cc = src;
+	i = 0;
+	while (i < n)
+	{
+		*(c + i) = *(cc + i);
+		i++;
+	}
+	return (dest);
 }
+
