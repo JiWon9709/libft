@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memchr.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 15:50:35 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 16:30:23 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/10 16:56:54 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 20:10:02 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	const char		*cc;
-	size_t			i;
+	size_t	i;
 
-	cc = s;
 	i = 0;
-	while (i < n)
+	while (i < n && (*s1 + i) && (*s2 + i))
 	{
-		if (*(cc + i) == (unsigned char)c)
-			return ((unsigned char*)s + i);
+		if (*(s1 + i) != *(s2 + i))
+			return (*(s1 + i) - *(s2 + i));
 		i++;
 	}
-	return (NULL);
+	return (0);
 }

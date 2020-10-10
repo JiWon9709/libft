@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memchr.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 15:50:35 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 16:30:23 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/10 19:51:50 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 19:56:42 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <libft.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strdup(const char *s)
 {
-	const char		*cc;
-	size_t			i;
+	const char	*ptr;
+	int			i;
 
-	cc = s;
 	i = 0;
-	while (i < n)
+	ptr = (char *)malloc(sizeof(s));
+	while (*(s + i))
 	{
-		if (*(cc + i) == (unsigned char)c)
-			return ((unsigned char*)s + i);
+		*(ptr + i) = *(s + i);
 		i++;
 	}
-	return (NULL);
+	return ((char *)ptr);
 }

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memchr.c                                           :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 15:50:35 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 16:30:23 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/10 14:50:49 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 15:37:07 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	const char		*cc;
-	size_t			i;
+	char		chr;
+	int			i;
 
-	cc = s;
 	i = 0;
-	while (i < n)
+	chr = c;
+	while (*(s + i))
 	{
-		if (*(cc + i) == (unsigned char)c)
-			return ((unsigned char*)s + i);
+		if (*(s + i) == chr)
+			return ((char *)s + i);
 		i++;
 	}
 	return (NULL);

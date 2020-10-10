@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memchr.c                                           :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 15:50:35 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 16:30:23 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/10 14:10:02 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 14:40:11 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	const char		*cc;
-	size_t			i;
+	size_t	i;
+	size_t	d;
+	size_t	s;
 
-	cc = s;
 	i = 0;
-	while (i < n)
+	d = 0;
+	s = 0;
+	while (*(dst + d))
+		d++;
+	while (*(src + s))
+		s++;
+	while (i < size)
 	{
-		if (*(cc + i) == (unsigned char)c)
-			return ((unsigned char*)s + i);
+		*(dst + i) = *(src + i);
 		i++;
 	}
-	return (NULL);
+	*(dst + i) = '\0';
+	if (size >= d)
+		return (
+	return (i);
 }
