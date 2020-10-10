@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/10 19:30:40 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 19:33:13 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/10 19:51:50 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 21:20:29 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int		ft_isprint(int c)
+char	*ft_strdup(const char *s)
 {
-	if (c >= 40 && c <= 176)
-		return (1);
-	else
-		return (0);
+	char		*ptr;
+	int			i;
+
+	i = 0;
+	ptr = (char *)malloc(sizeof(s));
+	while (*(s + i))
+	{
+		*(ptr + i) = *(s + i);
+		i++;
+	}
+	return ((char *)ptr);
 }

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcmp.c                                           :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 16:30:53 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 16:57:00 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/07 17:12:22 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 21:11:12 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+size_t	ft_strlcpy(char *dest, const char *src, size_t len)
 {
 	size_t		i;
-	const char	*c1;
-	const char	*c2;
 
 	i = 0;
-	c1 = s1;
-	c2 = s2;
-	while (i < n)
+	while (i < len)
 	{
-		if ((*(c1 + i)) != (*(c2 + i)))
-			return (*(c1 + i) - *(c2 + i));
+		*(dest + i) = *(src + i);
 		i++;
 	}
-	return (0);
+	*(dest + i) = '\0';
+	return (ft_strlen(src));
 }

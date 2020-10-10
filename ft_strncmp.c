@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bzero.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <jyou@student.42.kr>                  +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 20:16:21 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 15:21:27 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/10 16:56:54 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 20:10:02 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-void	ft_bzero(void *ptr, size_t size)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	char	*c;
 
-	c = ptr;
 	i = 0;
-	while (i < size)
+	while (i < n && (*s1 + i) && (*s2 + i))
 	{
-		*(c + i) = 0;
+		if (*(s1 + i) != *(s2 + i))
+			return (*(s1 + i) - *(s2 + i));
 		i++;
 	}
+	return (0);
 }
-

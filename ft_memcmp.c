@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memchr.c                                           :+:      :+:    :+:   */
+/*   memcmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 15:50:35 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 16:30:23 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/07 16:30:53 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/07 16:57:00 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const char		*cc;
-	size_t			i;
+	size_t		i;
+	const char	*c1;
+	const char	*c2;
 
-	cc = s;
 	i = 0;
+	c1 = s1;
+	c2 = s2;
 	while (i < n)
 	{
-		if (*(cc + i) == (unsigned char)c)
-			return ((unsigned char*)s + i);
+		if ((*(c1 + i)) != (*(c2 + i)))
+			return (*(c1 + i) - *(c2 + i));
 		i++;
 	}
-	return (NULL);
+	return (0);
 }

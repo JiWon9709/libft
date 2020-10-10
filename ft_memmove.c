@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   memmove.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/10 19:51:50 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 19:56:42 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/07 15:39:50 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/07 15:50:07 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <libft.h>
+#include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	const char	*ptr;
-	int			i;
+	char		*c;
+	const char	*cc;
+	size_t		i;
 
+	c = dest;
+	cc = src;
 	i = 0;
-	ptr = (char *)malloc(sizeof(s));
-	while (*(s + i))
+	while (i < n)
 	{
-		*(ptr + i) = *(s + i);
+		*(c + i) = *(cc + i);
 		i++;
 	}
-	return ((char *)ptr);
+	return (dest);
 }
+

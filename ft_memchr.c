@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcpy.c                                           :+:      :+:    :+:   */
+/*   memchr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <jyou@student.42.kr>                  +#+  +:+       +#+        */
+/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 20:32:29 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 15:04:11 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/07 15:50:35 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/07 16:30:23 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <libft.h>
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *ptr, size_t num)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char		*c;
-	const char	*cc;
-	size_t		i;
+	const char		*cc;
+	size_t			i;
 
+	cc = s;
 	i = 0;
-	c = dest;
-	cc = ptr;
-	while (i < num)
+	while (i < n)
 	{
-		*(c + i) = *(cc + i);
+		if (*(cc + i) == (unsigned char)c)
+			return ((unsigned char*)s + i);
 		i++;
 	}
-	return (dest);
+	return (NULL);
 }
-

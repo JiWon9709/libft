@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/10 15:06:23 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 15:35:34 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/10 15:37:31 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 16:56:36 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strnstr(const char *s, const char *n, size_t size)
 {
-	char	chr;
-	int		i;
-	int		size;
+	size_t	i;
+	size_t	n_len;
+	size_t	n_size;
 
-	i = 1;
-	chr = c;
-	size = 0;
-	while (*(s + size))
-		size++;
-	while (*(s + size - i))
+	i = 0;
+	n_size = 0;
+	while (*(n + n_size))
+		n_size++;
+	if (n_size == 0)
+		return ((char *)s);
+	while (*(s + i) && i < size)
 	{
-		if (*(s + size - i) == chr)
-			return ((char *)s + size - i);
+		if (*(s + i) == *n)
+		{
+			n_len = 0;
+			while (*(n + n_len) && *(s + i + n_len) == *(n + n_len))
+			{
+				n_len++;
+			}
+			if (n_len == n_size)
+				return ((char *)s + i);
+		}
 		i++;
 	}
 	return (NULL);

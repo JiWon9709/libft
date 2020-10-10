@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.c                                           :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <jyou@student.42.kr>                  +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 01:11:53 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 14:45:16 by jyou             ###   ########.fr       */
+/*   Created: 2020/09/30 01:12:39 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 21:11:38 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-void	*ft_memset(void *ptr, int value, size_t num)
+int		ft_toupper(int c)
 {
-	size_t		i;
-	char		*c;
-
-	c = ptr;
-	i = 0;
-	while (i < num)
-	{
-		*(c++) = value;
-		i++;
-	}
+	if (c <= 122 && c >= 97)
+		return (c - 32);
+	else
+		return (c);
 }
 

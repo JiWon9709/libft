@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/10 14:10:02 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 14:40:11 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/10 15:06:23 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 15:35:34 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
-	size_t	d;
-	size_t	s;
+	char	chr;
+	int		i;
+	int		size;
 
-	i = 0;
-	d = 0;
-	s = 0;
-	while (*(dst + d))
-		d++;
-	while (*(src + s))
-		s++;
-	while (i < size)
+	i = 1;
+	chr = c;
+	size = 0;
+	while (*(s + size))
+		size++;
+	while (*(s + size - i))
 	{
-		*(dst + i) = *(src + i);
+		if (*(s + size - i) == chr)
+			return ((char *)s + size - i);
 		i++;
 	}
-	*(dst + i) = '\0';
-	if (size >= d)
-		return (
-	return (i);
+	return (NULL);
 }

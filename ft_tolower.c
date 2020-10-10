@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   tolower.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42.kr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/10 16:56:54 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 20:10:02 by jyou             ###   ########.fr       */
+/*   Created: 2020/09/30 18:15:54 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/07 14:46:18 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int		ft_tolower(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n && (*s1 + i) && (*s2 + i))
-	{
-		if (*(s1 + i) != *(s2 + i))
-			return (*(s1 + i) - *(s2 + i));
-		i++;
-	}
-	return (0);
+	if (c <= 90 && c >= 65)
+		return (c + 32);
+	else
+		return (c);
 }
+

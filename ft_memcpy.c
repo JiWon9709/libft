@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/10 19:33:40 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 19:51:36 by jyou             ###   ########.fr       */
+/*   Created: 2020/09/30 20:32:29 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 21:02:50 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include <stdlib.h>
+#include "libft.h"
 
-void		*ft_calloc(size_t n, size_t size)
+void	*ft_memcpy(void *dest, const void *ptr, size_t num)
 {
-	void	*ptr;
-	ptr = (void *)malloc(sizeof(n) * size);
-	if (!ft_memset(ptr, 0x00, sizeof(n) * size))
-			return (NULL);
-	return (ptr);
+	char		*c;
+	const char	*cc;
+	size_t		i;
+
+	i = 0;
+	c = dest;
+	cc = ptr;
+	while (i < num)
+	{
+		*(c + i) = *(cc + i);
+		i++;
+	}
+	return (dest);
 }

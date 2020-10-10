@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/10 17:50:42 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 19:03:58 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/10 19:04:56 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 19:11:33 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int		ft_isalpha(int c)
+int		ft_isdigit(int c)
 {
 	char	chr;
 
 	chr = c;
-	if ((chr >= 'a' && chr <= 'z') || (chr >= 'A' && chr <= 'Z'))
+	if (chr >= '0' && chr <= '9')
 		return (1);
 	else
 		return (0);

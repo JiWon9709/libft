@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tolower.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <jyou@student.42.kr>                  +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 18:15:54 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 14:46:18 by jyou             ###   ########.fr       */
+/*   Created: 2020/09/30 01:11:53 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 21:15:21 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int		ft_tolower(int c)
+void	*ft_memset(void *ptr, int value, size_t num)
 {
-	if (c <= 90 && c >= 65)
-		return (c + 32);
-	else
-		return (c);
-}
+	size_t		i;
+	char		*c;
 
+	c = ptr;
+	i = 0;
+	while (i < num)
+	{
+		*(c++) = value;
+		i++;
+	}
+	return (ptr);
+}

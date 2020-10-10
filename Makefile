@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/10 19:57:41 by jyou              #+#    #+#              #
-#    Updated: 2020/10/10 20:06:10 by jyou             ###   ########.fr        #
+#    Updated: 2020/10/10 21:07:05 by jyou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
-CFLAGS	= -Werror -Wall -Wextra
+CFLAGS	= -Wall -Werror -Wextra -I./includes
 FILES	= ft_memset.c \
 		  ft_bzero.c  \
 		  ft_memcpy.c \
@@ -20,7 +20,7 @@ FILES	= ft_memset.c \
 		  ft_memchr.c \
 		  ft_memcmp.c \
 		  ft_strlen.c \
-		  ft_strcpy.c \
+		  ft_strlcpy.c \
 		  ft_strlcat.c \
 		  ft_strchr.c \
 		  ft_strrchr.c \
@@ -36,19 +36,22 @@ FILES	= ft_memset.c \
 		  ft_tolower.c \
 		  ft_calloc.c \
 		  ft_strdup.c
-OBJS	= $(FILES:%.c=%.o)
+OBJS	= $(FILES:.c=.o)
 
 all: $(NAME)
 
-copy:
-	cp -f libc-funcs/*.c .
+$(NAME) : $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
-$(NAME) : $(FILES)
+$(OBJS) : $(FILES)
 	gcc $(CFLAGS) $(FILES)
 
 clean:
 	rm -f $(OBJS)
-	rm -f $(FILES)
 
 fclean: clean
 	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: clean fclean all re

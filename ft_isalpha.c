@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 16:57:23 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 17:11:58 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/10 17:50:42 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 19:03:58 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int		ft_isalpha(int c)
 {
-	size_t	i;
+	char	chr;
 
-	i = 0;
-	while (*(s + i))
-	{
-		i++;
-	}
-	return (i);
+	chr = c;
+	if ((chr >= 'a' && chr <= 'z') || (chr >= 'A' && chr <= 'Z'))
+		return (1);
+	else
+		return (0);
 }

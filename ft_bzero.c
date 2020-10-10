@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memccpy.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 15:34:39 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 15:44:48 by jyou             ###   ########.fr       */
+/*   Created: 2020/09/30 20:16:21 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/10 21:02:06 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+void	ft_bzero(void *ptr, size_t size)
 {
-	char		*c;
-	const char	*cc;
-	size_t		i;
+	size_t	i;
+	char	*c;
 
-	c = dest;
-	cc = src;
+	c = ptr;
 	i = 0;
-	while (i < n)
+	while (i < size)
 	{
-		*(c++) = *(cc++);
-		if (*cc == c)
-		{
-			*(c++) = *(cc++);
-			return (dest);
-		}
+		*(c + i) = 0;
+		i++;
 	}
-	return (NULL);
 }
