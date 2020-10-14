@@ -6,7 +6,7 @@
 /*   By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 20:11:26 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 21:01:39 by jyou             ###   ########.fr       */
+/*   Updated: 2020/10/14 17:43:46 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 void	*ft_calloc(size_t n, size_t size);
 char	*ft_strdup(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

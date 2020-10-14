@@ -6,7 +6,7 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 15:50:35 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/07 16:30:23 by jyou             ###   ########.fr       */
+/*   Updated: 2020/10/14 16:09:07 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const char		*cc;
-	size_t			i;
+	unsigned const char		*cc;
+	size_t					i;
 
 	cc = s;
 	i = 0;

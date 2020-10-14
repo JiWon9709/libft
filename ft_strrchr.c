@@ -6,7 +6,7 @@
 /*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 15:06:23 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 15:35:34 by jyou             ###   ########.fr       */
+/*   Updated: 2020/10/14 16:53:41 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	chr;
-	int		i;
-	int		size;
+	char	*str;
 
-	i = 1;
-	chr = c;
-	size = 0;
-	while (*(s + size))
-		size++;
-	while (*(s + size - i))
+	str = (char *)s;
+	while (*str)
+		str++;
+	if (c == '\0')
+		return (str);
+	str--;
+	while (*str)
 	{
-		if (*(s + size - i) == chr)
-			return ((char *)s + size - i);
-		i++;
+		if (*str == c)
+			return (str);
+		str--;
 	}
 	return (NULL);
 }

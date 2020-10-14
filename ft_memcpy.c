@@ -6,7 +6,7 @@
 /*   By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 20:32:29 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 21:02:50 by jyou             ###   ########.fr       */
+/*   Updated: 2020/10/14 15:34:14 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dest, const void *ptr, size_t num)
 	i = 0;
 	c = dest;
 	cc = ptr;
+	if ((!c && !cc) || !num)
+		return (dest);
 	while (i < num)
 	{
 		*(c + i) = *(cc + i);

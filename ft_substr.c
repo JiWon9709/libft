@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/10 19:30:40 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/14 16:18:56 by jyou             ###   ########.fr       */
+/*   Created: 2020/10/14 17:03:10 by jyou              #+#    #+#             */
+/*   Updated: 2020/10/14 17:37:49 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isprint(int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (c >= 32 && c <= 126)
-		return (c);
-	else
-		return (0);
+	char			*sub;
+	unsigned int	s_len;
+
+	sub = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s || !sub)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (s_len <= start)
+		return (sub);
+	ft_memmove(sub, s+start, len);
+	*(sub+len) = '\0';
+	return (sub);
 }

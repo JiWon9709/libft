@@ -6,7 +6,7 @@
 /*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 14:50:49 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 15:37:07 by jyou             ###   ########.fr       */
+/*   Updated: 2020/10/14 16:24:10 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s + i);
 		i++;
 	}
+	if (chr == '\0')
+		return ((char *)s + i);
 	return (NULL);
 }

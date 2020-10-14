@@ -6,13 +6,13 @@
 #    By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/10 19:57:41 by jyou              #+#    #+#              #
-#    Updated: 2020/10/10 21:07:05 by jyou             ###   ########.fr        #
+#    Updated: 2020/10/14 17:44:12 by jyou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
-CFLAGS	= -Wall -Werror -Wextra -I./includes
-FILES	= ft_memset.c \
+CFLAGS	= -Wall -Werror -Wextra -I.
+SRCS	= ft_memset.c \
 		  ft_bzero.c  \
 		  ft_memcpy.c \
 		  ft_memccpy.c \
@@ -35,22 +35,24 @@ FILES	= ft_memset.c \
 		  ft_toupper.c \
 		  ft_tolower.c \
 		  ft_calloc.c \
-		  ft_strdup.c
-OBJS	= $(FILES:.c=.o)
+		  ft_strdup.c \
+		  ft_substr.c \
+		  ft_strjoin.c
+OBJS	= $(SRCS:.c=.o)
+
+.c.o : $(SRCS)
+		gcc $(CFLAGS) -c $< -o $@
+
+$(NAME) : $(OBJS)
+		ar -rcs $(NAME) $(OBJS)
 
 all: $(NAME)
 
-$(NAME) : $(OBJS)
-	ar rcs $(NAME) $(OBJS)
-
-$(OBJS) : $(FILES)
-	gcc $(CFLAGS) $(FILES)
-
 clean:
-	rm -f $(OBJS)
+		rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+		rm -f $(NAME)
 
 re: fclean all
 
