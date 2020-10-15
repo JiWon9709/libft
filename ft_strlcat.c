@@ -6,7 +6,7 @@
 /*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 14:10:02 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 21:19:27 by jyou             ###   ########.fr       */
+/*   Updated: 2020/10/15 15:49:03 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,17 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	s;
 
 	i = 0;
-	d = 0;
-	s = 0;
-	while (*(dst + d))
-		d++;
-	while (*(src + s))
-		s++;
-	while (i < size)
+	d = ft_strlen(dst);
+	s = ft_strlen(src);
+	if ((!dst && !src) || !size)
+		return (0);
+	while (i < size && d + i + 1 < size)
 	{
-		*(dst + i) = *(src + i);
+		*(dst + d + i + 1) = *(src + i);
 		i++;
 	}
 	*(dst + i) = '\0';
 	if (size >= d)
 		return (d + s);
-	return (i);
+	return (d + i);
 }
