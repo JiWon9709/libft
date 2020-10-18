@@ -6,7 +6,7 @@
 /*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 15:37:31 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/10 16:56:36 by jyou             ###   ########.fr       */
+/*   Updated: 2020/10/18 21:51:57 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,22 @@
 char	*ft_strnstr(const char *s, const char *n, size_t size)
 {
 	size_t	i;
-	size_t	n_len;
+	//size_t	n_len;
 	size_t	n_size;
 
 	i = 0;
-	n_size = 0;
-	while (*(n + n_size))
-		n_size++;
-	if (n_size == 0)
+	n_size = ft_strlen(n);
+	if (n_size == 0 || !n)
 		return ((char *)s);
-	while (*(s + i) && i < size)
+	while (i < size) //*(s + i) != '\0'
 	{
-		if (*(s + i) == *n)
-		{
-			n_len = 0;
-			while (*(n + n_len) && *(s + i + n_len) == *(n + n_len))
-			{
-				n_len++;
-			}
-			if (n_len == n_size)
-				return ((char *)s + i);
-		}
+		//if (*s == *n)
+		//{
+			if (*s == *n && ft_memcmp(s, n, n_size) == 0)
+				return ((char *)s);
+		//}
 		i++;
+		s++;
 	}
 	return (NULL);
 }

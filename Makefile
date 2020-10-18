@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jyou <jyou@student.42.fr>                  +#+  +:+       +#+         #
+#    By: jyou <jyou@student.42.kr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/10 19:57:41 by jyou              #+#    #+#              #
-#    Updated: 2020/10/14 17:44:12 by jyou             ###   ########.fr        #
+#    Updated: 2020/10/18 18:11:16 by jyou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ SRCS	= ft_memset.c \
 		  ft_calloc.c \
 		  ft_strdup.c \
 		  ft_substr.c \
-		  ft_strjoin.c
+		  ft_strjoin.c \
+		  ft_strtrim.c \
+		  ft_split.c
 OBJS	= $(SRCS:.c=.o)
 
 .c.o : $(SRCS)

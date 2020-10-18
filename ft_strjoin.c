@@ -6,7 +6,7 @@
 /*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 17:38:06 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/15 16:05:46 by jyou             ###   ########.fr       */
+/*   Updated: 2020/10/18 14:35:24 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!str)
 		return (NULL);
-	ft_memmove(str, s1, s1_len - 1);
+	ft_memmove(str, s1, s1_len);
 	i = 0;
 	while (i < s2_len && !(*s2))
 	{
