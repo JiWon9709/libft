@@ -6,37 +6,50 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:05:56 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/18 15:00:05 by jyou             ###   ########.fr       */
+/*   Updated: 2020/10/21 19:03:24 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char		*check_set(char const *s1, char const *set)
+{
+	int		i;
+
+	i = 0;
+	while (*s1)
+	{
+		i = 0;
+		while (*(set + i))
+		{
+			if (*s1 != *(set + i))
+				return (char *)(s1);
+			else
+				break ;
+			i++;
+		}
+		s1++;
+	}
+	return (NULL);
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 	char	*begin;
 	char	*end;
-	int		set_size;
-	int		i;
+//	int		set_size;
 
-	str = (char *)malloc(sizeof(char) * ft_strlen(s1));
-	if (!str)
-		return (NULL);
-	set_size = ft_strlen(set);
-	i = 0;
-	while (!*set)
-	{
-		if (!ft_strnstr(s1, set, set_size))
-			begin = ft_strchr(s1, *set);
-		set++;
-	}
+	if (!(str = (char *)malloc(sizeof(char) * ft_strlen(s1))))
+		return (ft_strdup(""));
+//	set_size = ft_strlen(set);
+	begin = check_set(s1, set);
 	while (!*set)
 	{
 		if (!ft_strrchr(s1, *set))
 			end = ft_strrchr(s1, *set);
 		set++;
 	}
-	str = ft_substr(s1, ft_strlen(begin), end - begin);
+	str = ft_substr(s1, ft_strlen(begin), ft_strlen(end) - ft_strlen(begin));
 	return (str);
 }
