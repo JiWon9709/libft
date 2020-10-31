@@ -6,7 +6,7 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:05:56 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/21 19:03:24 by jyou             ###   ########.fr       */
+/*   Updated: 2020/10/31 15:15:42 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static char		*check_set(char const *s1, char const *set)
 		i = 0;
 		while (*(set + i))
 		{
-			if (*s1 != *(set + i))
+			if (*s1 == *(set + i) && *(set + i + 1) == '\0')
 				return (char *)(s1);
-			else
-				break ;
+			//else
+			//	break ;
 			i++;
 		}
 		s1++;
@@ -44,9 +44,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (ft_strdup(""));
 //	set_size = ft_strlen(set);
 	begin = check_set(s1, set);
-	while (!*set)
+	while (*set)
 	{
-		if (!ft_strrchr(s1, *set))
+		if (ft_strrchr(s1, *set))
 			end = ft_strrchr(s1, *set);
 		set++;
 	}
