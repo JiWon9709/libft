@@ -6,7 +6,7 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 15:39:50 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/14 16:07:50 by jyou             ###   ########.fr       */
+/*   Updated: 2020/11/01 17:29:38 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		c += n - 1;
 		cc += n - 1;
 		while (n-- > 0)
-		{
 			*(c--) = *(cc--);
-		}
 	}
 	else
 	{
@@ -42,4 +40,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-

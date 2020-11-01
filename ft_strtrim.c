@@ -6,50 +6,74 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:05:56 by jyou              #+#    #+#             */
-/*   Updated: 2020/10/31 15:15:42 by jyou             ###   ########.fr       */
+/*   Updated: 2020/11/01 17:34:30 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*check_set(char const *s1, char const *set)
+static size_t		find_begin(char const *s1, char const *set)
 {
-	int		i;
+	size_t		i;
+	size_t		begin;
 
 	i = 0;
-	while (*s1)
+	begin = 0;
+	while (*(set + i))
 	{
-		i = 0;
-		while (*(set + i))
+		if (*(s1 + begin) != *(set + i) && *(set + i + 1) == '\0')
+			return (begin);
+		if (*(s1 + begin) == *(set + i))
 		{
-			if (*s1 == *(set + i) && *(set + i + 1) == '\0')
-				return (char *)(s1);
-			//else
-			//	break ;
-			i++;
+			begin++;
+			i = -1;
 		}
-		s1++;
+		i++;
 	}
-	return (NULL);
+	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+static size_t		find_end(char const *s1, char const *set)
 {
-	char	*str;
-	char	*begin;
-	char	*end;
-//	int		set_size;
+	size_t		i;
+	size_t		s1_len;
 
-	if (!(str = (char *)malloc(sizeof(char) * ft_strlen(s1))))
-		return (ft_strdup(""));
-//	set_size = ft_strlen(set);
-	begin = check_set(s1, set);
-	while (*set)
+	i = 0;
+	if (!s1)
+		return (0);
+	s1_len = ft_strlen(s1) - 1;
+	while (*(set + i) && *(s1 + s1_len))
 	{
-		if (ft_strrchr(s1, *set))
-			end = ft_strrchr(s1, *set);
-		set++;
+		if (*(s1 + s1_len) != *(set + i) && *(set + i + 1) == '\0')
+			return (s1_len);
+		if (*(s1 + s1_len) == *(set + i))
+		{
+			s1_len--;
+			i = -1;
+		}
+		i++;
 	}
-	str = ft_substr(s1, ft_strlen(begin), ft_strlen(end) - ft_strlen(begin));
+	return (0);
+}
+
+char				*ft_strtrim(char const *s1, char const *set)
+{
+	char		*str;
+	size_t		begin;
+	size_t		end;
+	int			str_len;
+
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
+	begin = find_begin(s1, set);
+	if (begin == ft_strlen(s1))
+		return (ft_strdup(""));
+	end = find_end(s1, set);
+	str_len = end - begin + 2;
+	if (!(str = (char *)malloc(sizeof(char) * str_len)))
+		return (ft_strdup(""));
+	ft_strlcpy(str, s1 + begin, str_len);
 	return (str);
 }
