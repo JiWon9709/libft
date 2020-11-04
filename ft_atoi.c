@@ -28,21 +28,14 @@ static int		check_sign(const char *str)
 	int		count;
 	int		i;
 
-	count = 0;
+	count = 1;
 	i = 0;
-	while (str[i])
+	while (str[i] == '-' || str[i] == '+')
 	{
-		if (str[i] == '-' || str[i] == '+')
-		{
-			if (str[i + 1] == '-' || str[i + 1] == '+')
-				return (-1);
-			count++;
-		}
-		if (str[i] <= '9' && str[i] >= '0')
-		{
-			if (str[i + 1] == '-' || str[i + 1] == '+')
-				return (i);
-		}
+		if (str[i] == '-')
+			count *= -1;
+		if (str[i] == '+')
+			count *= 1;
 		i++;
 	}
 	return (count);
@@ -62,30 +55,17 @@ int				ft_atoi(const char *str)
 	int		sign;
 	int		i;
 	int		count;
-	int		sign_count;
 
 	result = 0;
-	sign = 1;
 	i = 0;
 	count = 0;
-	sign_count = check_sign(str);
+	sign = check_sign(str);
 	while (is_space(str + i))
 		i++;
-	while (*(str + i))
+	while (*(str + i) && check_num(str[i]))
 	{
-		if (sign_count == -1)
-			return (0);
-		if (*(str + i) == '-' && !check_num(str[i + 1]))
-			sign *= (-1);
-		else if (*(str + i) == '+' && !check_num(str[i + 1]))
-			sign *= 1;
-		else if (check_num(str[i]))
-		{
-			result = *(str + i) - '0' + (result * 10);
-			count++;
-		}
-		else
-			break ;
+		result = *(str + i) - '0' + (result * 10);
+		count++;
 		i++;
 	}
 	if (count >= 20 && sign == -1)
