@@ -27,6 +27,7 @@ char		*ft_itoa(int n)
 		if (!(str = (char *)malloc(sizeof(char) * (len + 2))))
 			return (NULL);
 		*str += '-';
+		str++;
 	}
 	else
 	{
