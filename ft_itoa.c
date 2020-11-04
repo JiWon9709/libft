@@ -35,6 +35,12 @@ char		*ft_itoa(int n)
 		if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 			return (ft_strdup(""));
 	}
+	if (len == 1)
+	{
+		*str += nn % 10 + '0';
+		*str += '\0';
+		return (str);
+	}
 	while (len--)
 	{
 		*str += (nn / (10 * len)) + '0';
