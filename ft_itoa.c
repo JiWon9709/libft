@@ -22,7 +22,7 @@ char		*ft_itoa(int n)
 {
 	char	*str;
 	int		len;
-	int		nn;
+	long	nn;
 	int		i;
 
 	len = 1;
@@ -42,12 +42,6 @@ char		*ft_itoa(int n)
 		if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 			return (NULL);
 	}
-	// if (len == 1)
-	// {
-	// 	str[i++] = nn % 10 + '0';
-	// 	str[i] = '\0';
-	// 	return (str);
-	// }
 	while (len >= 0)
 	{
 		len--;
@@ -57,7 +51,8 @@ char		*ft_itoa(int n)
 			str[i] = '\0';
 			break ;
 		}
-		str[i++] += (nn / ten_mul(len)) + '0';
+		str[i++] = (nn / ten_mul(len)) + '0';
+		nn -= ten_mul(len) * (nn / ten_mul(len));
 	}
 	return (str);
 }

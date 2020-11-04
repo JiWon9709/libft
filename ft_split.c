@@ -74,7 +74,7 @@ char				**ft_split(char const *s, char c)
 	size_t			start;
 	size_t			next_str_len;
 
-	if (!s)
+	if (!s || !c)
 		return (NULL);
 	arr_len = get_arr_len(s, c);
 	if (!(arr = (char **)malloc(sizeof(char *) * (arr_len + 1))))
