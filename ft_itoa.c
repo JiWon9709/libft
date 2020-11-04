@@ -35,6 +35,7 @@ char		*ft_itoa(int n)
 		if (!(str = (char *)malloc(sizeof(char) * (len + 2))))
 			return (NULL);
 		str[i++] = '-';
+		nn *= -1;
 	}
 	else
 	{
@@ -47,8 +48,9 @@ char		*ft_itoa(int n)
 	// 	str[i] = '\0';
 	// 	return (str);
 	// }
-	while (len-- && len >= 0)
+	while (len >= 0)
 	{
+		len--;
 		if (len == 0)
 		{
 			str[i++] = nn % 10 + '0';
