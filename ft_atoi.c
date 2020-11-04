@@ -30,6 +30,8 @@ static int		check_sign(const char *str)
 
 	count = 1;
 	i = 0;
+	while(is_space(str[i]))
+		i++;
 	while (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -60,7 +62,7 @@ int				ft_atoi(const char *str)
 	i = 0;
 	count = 0;
 	sign = check_sign(str);
-	while (is_space(str + i))
+	while (is_space(str + i) || str[i] == '-' || str[i] == '+')
 		i++;
 	while (*(str + i) && check_num(str[i]))
 	{
