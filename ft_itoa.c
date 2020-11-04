@@ -11,6 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+static int	ten_mul(int len)
+{
+	if (len == 0)
+		return (1);
+	return (10 * ten_mul(len - 1));
+}
 
 char		*ft_itoa(int n)
 {
@@ -35,12 +41,12 @@ char		*ft_itoa(int n)
 		if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 			return (NULL);
 	}
-	if (len == 1)
-	{
-		str[i++] = nn % 10 + '0';
-		str[i] = '\0';
-		return (str);
-	}
+	// if (len == 1)
+	// {
+	// 	str[i++] = nn % 10 + '0';
+	// 	str[i] = '\0';
+	// 	return (str);
+	// }
 	while (len-- && len >= 0)
 	{
 		if (len == 0)
@@ -49,7 +55,7 @@ char		*ft_itoa(int n)
 			str[i] = '\0';
 			break ;
 		}
-		str[i++] += (nn / (10 * len)) + '0';
+		str[i++] += (nn / ten_mul(len)) + '0';
 	}
 	return (str);
 }
