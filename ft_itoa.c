@@ -18,22 +18,20 @@ char		*ft_itoa(int n)
 	int		len;
 	int		nn;
 
-	len = 0;
+	len = 1;
 	nn = n;
 	while ((n = n / 10) != 0)
 		len++;
-	len++; // 끝까지 길이 재기
 	if (nn < 0)
 	{
-		// 음수일때는 부호도 넣어야하니까 len+1
 		if (!(str = (char *)malloc(sizeof(char) * (len + 2))))
-			return (ft_strdup(""));
+			return (NULL);
 		*str += '-';
 	}
 	else
 	{
 		if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
-			return (ft_strdup(""));
+			return (NULL);
 	}
 	if (len == 1)
 	{
@@ -43,13 +41,13 @@ char		*ft_itoa(int n)
 	}
 	while (len--)
 	{
-		*str += (nn / (10 * len)) + '0';
 		if (len == 0)
 		{
 			*str += nn % 10 + '0';
 			*str += '\0';
 			break ;
 		}
+		*str += (nn / (10 * len)) + '0';
 	}
 	return (str);
 }
