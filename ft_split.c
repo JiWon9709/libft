@@ -39,29 +39,31 @@ static size_t		get_arr_len(char const *s, char c)
 
 static size_t		get_str_start(char *next_str, char c, size_t start)
 {
-	size_t		i;
+	int		i;
 
 	i = 0;
 	while (*(next_str + i + start) == c)
 		i++;
-	while (*(next_str + i + start))
-	{
-		if (*(next_str + i + start) != c)
-			return (i + start);
-		i++;
-	}
-	return (start);
+	// while (*(next_str + i + start))
+	// {
+	// 	if (*(next_str + i + start) != c)
+	// 		return (i + start);
+	// 	i++;
+	// }
+	return (start + i);
 }
 
 static size_t		get_str_len(char *next_str, char c, size_t start)
 {
-	size_t		i;
+	int		i;
 
 	i = 0;
+	while (*(next_str + i + start) == c)
+		start++;
 	while (*(next_str + start + i))
 	{
 		if (*(next_str + start + i) == c)
-			return (i - 1);
+			return (i);
 		i++;
 	}
 	return (0);
@@ -80,13 +82,13 @@ char				**ft_split(char const *s, char c)
 		return (NULL);
 	arr_len = get_arr_len(s, c);
 	if (!(arr = (char **)malloc(sizeof(char *) * (arr_len + 1))))
-		return (ft_strdup(""));
+		return (NULL);
 	i = 0;
 	start = 0;
 	str = (char *)s;
 	while (i < arr_len)
 	{
-		start = ft_strlen(get_str_start(s, c, start));
+		start = get_str_start(str, c, start);
 		next_str_len = get_str_len(str, c, start) + 1;
 		if (!(*arr = (char *)malloc(sizeof(char) * next_str_len)))
 		{
