@@ -11,37 +11,9 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-static int	ten_mul(int len)
-{
-	if (len == 0)
-		return (1);
-	return (10 * ten_mul(len - 1));
-}
 
-char		*ft_itoa(int n)
+static void		put_str(int len, long nn, int i, char *str)
 {
-	char	*str;
-	int		len;
-	long	nn;
-	int		i;
-
-	len = 1;
-	i = 0;
-	nn = n;
-	while ((n = n / 10) != 0)
-		len++;
-	if (nn < 0)
-	{
-		if (!(str = (char *)malloc(sizeof(char) * (len + 2))))
-			return (NULL);
-		str[i++] = '-';
-		nn *= -1;
-	}
-	else
-	{
-		if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
-			return (NULL);
-	}
 	while (len >= 0)
 	{
 		len--;
@@ -54,5 +26,59 @@ char		*ft_itoa(int n)
 		str[i++] = (nn / ten_mul(len)) + '0';
 		nn -= ten_mul(len) * (nn / ten_mul(len));
 	}
+}
+
+static int		ten_mul(int len)
+{
+	if (len == 0)
+		return (1);
+	return (10 * ten_mul(len - 1));
+}
+
+static int		get_len(int n)
+{
+	int		len;
+
+	len = 1;
+	while ((n = n / 10) != 0)
+		len++;
+	return (len);
+}
+
+char			*ft_itoa(int n)
+{
+	char	*str;
+	int		len;
+	long	nn;
+	int		i;
+
+	len = get_len(n);
+	i = 0;
+	nn = n;
+	if (nn < 0)
+	{
+		if (!(str = (char *)malloc(sizeof(char) * (len + 2))))
+			return (NULL);
+		str[i++] = '-';
+		nn *= -1;
+	}
+	else
+	{
+		if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+			return (NULL);
+	}
+	// while (len >= 0)
+	// {
+	// 	len--;
+	// 	if (len == 0)
+	// 	{
+	// 		str[i++] = nn % 10 + '0';
+	// 		str[i] = '\0';
+	// 		break ;
+	// 	}
+	// 	str[i++] = (nn / ten_mul(len)) + '0';
+	// 	nn -= ten_mul(len) * (nn / ten_mul(len));
+	// }
+	put_str(len, nn, i, str);
 	return (str);
 }
