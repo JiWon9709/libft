@@ -15,22 +15,24 @@
 static size_t		get_arr_len(char const *s, char c)
 {
 	size_t		count;
+	int			i;
 
 	count = 0;
-	while (*s == c)
-		s++;
-	while (*s)
+	i = 0;
+	while (s[i] == c)
+		i++;
+	while (s[i])
 	{
-		if (*s == c)
+		if (s[i] == c)
 		{
 			count++;
-			while (*s == c)
-				s++;
+			while (s[i] == c)
+				i++;
 		}
 		else
-			s++;
+			i++;
 	}
-	if (*(--s) != c)
+	if (s[i - 1] != c)
 		count++;
 	return (count);
 }
@@ -78,13 +80,13 @@ char				**ft_split(char const *s, char c)
 		return (NULL);
 	arr_len = get_arr_len(s, c);
 	if (!(arr = (char **)malloc(sizeof(char *) * (arr_len + 1))))
-		return (NULL);
+		return (ft_strdup(""));
 	i = 0;
 	start = 0;
 	str = (char *)s;
 	while (i < arr_len)
 	{
-		start = ft_strlen(ft_strchr(s + start, c));
+		start = ft_strlen(get_str_start(s, c, start));
 		next_str_len = get_str_len(str, c, start) + 1;
 		if (!(*arr = (char *)malloc(sizeof(char) * next_str_len)))
 		{
