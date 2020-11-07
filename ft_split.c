@@ -6,7 +6,7 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:14:49 by jyou              #+#    #+#             */
-/*   Updated: 2020/11/06 16:43:41 by jyou             ###   ########.fr       */
+/*   Updated: 2020/11/07 12:16:04 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static size_t		get_arr_len(char const *s, char c)
 
 	count = 0;
 	i = 0;
+	if (!s[0])
+		return (0);
 	while (s[i] == c)
 		i++;
 	while (s[i])
@@ -44,12 +46,6 @@ static size_t		get_str_start(char *next_str, char c, size_t start)
 	i = 0;
 	while (*(next_str + i + start) == c)
 		i++;
-	while (*(next_str + i + start))
-	{
-		if (*(next_str + i + start) != c)
-			return (i + start);
-		i++;
-	}
 	return (start + i);
 }
 
@@ -66,22 +62,21 @@ static size_t		get_str_len(char *next_str, char c, size_t start)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
-static int			check_err(char **arr, int next_str_len, int i)
+static char			**check_err(char **arr)
 {
-	if (!(arr[i] = (char *)malloc(sizeof(char) * next_str_len)))
+	int		i;
+
+	i = 0;
+	while (arr[i])
 	{
-		while (arr[i])
-		{
-			free(arr[i]);
-			i--;
-		}
-		free(arr);
-		return (1);
+		free(arr[i]);
+		i++;
 	}
-	return (0);
+	free(arr);
+	return (NULL);
 }
 
 char				**ft_split(char const *s, char c)
@@ -91,25 +86,24 @@ char				**ft_split(char const *s, char c)
 	size_t			arr_len;
 	size_t			i;
 	size_t			start;
-	size_t			next_str_len;
 
 	if (!s || !c)
 		return (NULL);
 	arr_len = get_arr_len(s, c);
 	if (!(arr = (char **)malloc(sizeof(char *) * (arr_len + 1))))
 		return (NULL);
-	i = 0;
+	i = -1;
 	start = 0;
 	str = (char *)s;
-	while (i < arr_len)
+	while (++i < arr_len)
 	{
 		start = get_str_start(str, c, start);
-		next_str_len = get_str_len(str, c, start) + 1;
-		if (check_err(arr, next_str_len, i))
-			return (NULL);
-		ft_strlcpy(arr[i], s + start, next_str_len);
-		start = start + next_str_len - 1;
-		i++;
+		if (!(arr[i] = (char *)malloc(sizeof(char)
+						* (get_str_len(str, c, start) + 1))))
+			return (check_err(arr));
+		ft_strlcpy(arr[i], s + start, get_str_len(str, c, start) + 1);
+		start = start + get_str_len(str, c, start);
 	}
+	arr[i] = NULL;
 	return (arr);
 }
