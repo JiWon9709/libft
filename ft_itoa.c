@@ -6,11 +6,18 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 19:04:36 by jyou              #+#    #+#             */
-/*   Updated: 2020/11/01 17:32:06 by jyou             ###   ########.fr       */
+/*   Updated: 2020/11/05 23:54:15 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int		ten_mul(int len)
+{
+	if (len == 0)
+		return (1);
+	return (10 * ten_mul(len - 1));
+}
 
 static void		put_str(int len, long nn, int i, char *str)
 {
@@ -26,13 +33,6 @@ static void		put_str(int len, long nn, int i, char *str)
 		str[i++] = (nn / ten_mul(len)) + '0';
 		nn -= ten_mul(len) * (nn / ten_mul(len));
 	}
-}
-
-static int		ten_mul(int len)
-{
-	if (len == 0)
-		return (1);
-	return (10 * ten_mul(len - 1));
 }
 
 static int		get_len(int n)
@@ -67,18 +67,6 @@ char			*ft_itoa(int n)
 		if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 			return (NULL);
 	}
-	// while (len >= 0)
-	// {
-	// 	len--;
-	// 	if (len == 0)
-	// 	{
-	// 		str[i++] = nn % 10 + '0';
-	// 		str[i] = '\0';
-	// 		break ;
-	// 	}
-	// 	str[i++] = (nn / ten_mul(len)) + '0';
-	// 	nn -= ten_mul(len) * (nn / ten_mul(len));
-	// }
 	put_str(len, nn, i, str);
 	return (str);
 }

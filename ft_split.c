@@ -6,7 +6,7 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:14:49 by jyou              #+#    #+#             */
-/*   Updated: 2020/11/01 17:24:38 by jyou             ###   ########.fr       */
+/*   Updated: 2020/11/06 16:43:41 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ static size_t		get_str_start(char *next_str, char c, size_t start)
 	i = 0;
 	while (*(next_str + i + start) == c)
 		i++;
-	// while (*(next_str + i + start))
-	// {
-	// 	if (*(next_str + i + start) != c)
-	// 		return (i + start);
-	// 	i++;
-	// }
+	while (*(next_str + i + start))
+	{
+		if (*(next_str + i + start) != c)
+			return (i + start);
+		i++;
+	}
 	return (start + i);
 }
 
@@ -69,18 +69,19 @@ static size_t		get_str_len(char *next_str, char c, size_t start)
 	return (0);
 }
 
-static void			check_err(char **arr, int next_str_len)
+static int			check_err(char **arr, int next_str_len, int i)
 {
-	if (!(*arr = (char *)malloc(sizeof(char) * next_str_len)))
+	if (!(arr[i] = (char *)malloc(sizeof(char) * next_str_len)))
 	{
-		while (*arr)
+		while (arr[i])
 		{
-			free(*arr);
-			arr--;
+			free(arr[i]);
+			i--;
 		}
 		free(arr);
-		return (NULL);
+		return (1);
 	}
+	return (0);
 }
 
 char				**ft_split(char const *s, char c)
@@ -104,9 +105,10 @@ char				**ft_split(char const *s, char c)
 	{
 		start = get_str_start(str, c, start);
 		next_str_len = get_str_len(str, c, start) + 1;
-		check_err(arr, next_str_len);
-		ft_strlcpy(*arr, s + get_str_start(str, c, start), next_str_len);
-		*arr++;
+		if (check_err(arr, next_str_len, i))
+			return (NULL);
+		ft_strlcpy(arr[i], s + start, next_str_len);
+		start = start + next_str_len - 1;
 		i++;
 	}
 	return (arr);
