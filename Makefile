@@ -6,7 +6,7 @@
 #    By: jyou <jyou@student.42.kr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/10 19:57:41 by jyou              #+#    #+#              #
-#    Updated: 2020/10/29 17:43:01 by jyou             ###   ########.fr        #
+#    Updated: 2020/11/09 01:46:15 by jyou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,18 @@ SRCS	= ft_memset.c \
 		  ft_putstr_fd.c \
 		  ft_putendl_fd.c \
 		  ft_putnbr_fd.c
+BONUS	= ft_lstnew.c \
+		  ft_lstadd_front.c \
+		  ft_lstsize.c \
+		  ft_lstlast.c \
+		  ft_lstadd_back.c \
+		  ft_lstdelone.c \
+		  ft_lstclear.c \
+		  ft_lstiter.c \
+		  ft_lstmap.c
 OBJS	= $(SRCS:.c=.o)
+
+OBJS_B	= $(BONUS:.c=.o)
 
 .c.o : $(SRCS)
 		gcc $(CFLAGS) -c $< -o $@
@@ -54,14 +65,17 @@ OBJS	= $(SRCS:.c=.o)
 $(NAME) : $(OBJS)
 		ar -rcs $(NAME) $(OBJS)
 
+bonus: $(OBJS_B) $(NAME) $(OBJS)
+		ar rcs $(NAME) $(OBJS) $(OBJS_B)
+
 all: $(NAME)
 
 clean:
-		rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJS_B)
 
 fclean: clean
 		rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean all re
+.PHONY: clean fclean all re bonus
