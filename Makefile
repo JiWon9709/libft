@@ -6,7 +6,7 @@
 #    By: jyou <jyou@student.42.kr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/10 19:57:41 by jyou              #+#    #+#              #
-#    Updated: 2020/11/09 01:46:15 by jyou             ###   ########.fr        #
+#    Updated: 2020/11/09 14:31:28 by jyou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,4 +78,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean all re bonus
+.PHONY: clean fclean all re
