@@ -6,73 +6,60 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:05:56 by jyou              #+#    #+#             */
-/*   Updated: 2020/11/10 17:07:09 by jyou             ###   ########.fr       */
+/*   Updated: 2020/11/11 15:45:12 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static size_t		find_begin(char const *s1, char const *set)
+static int			find_begin(char const *s1, char const *set)
 {
 	size_t		i;
-	size_t		begin;
+	size_t		len;
 
 	i = 0;
-	begin = 0;
-	while (*(set + i))
+	len = ft_strlen(s1);
+	while (i < len)
 	{
-		if (*(s1 + begin) != *(set + i) && *(set + i + 1) == '\0')
-			return (begin);
-		if (*(s1 + begin) == *(set + i))
-		{
-			begin++;
-			i = -1;
-		}
+		if (ft_strchr(set, s1[i]) == 0)
+			break ;
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
-static size_t		find_end(char const *s1, char const *set)
+static int			find_end(char const *s1, char const *set)
 {
 	size_t		i;
-	size_t		s1_len;
+	size_t		len;
 
 	i = 0;
-	if (!s1)
-		return (0);
-	s1_len = ft_strlen(s1) - 1;
-	while (*(set + i) && *(s1 + s1_len))
+	len = ft_strlen(s1);
+	while (i < len)
 	{
-		if (*(s1 + s1_len) != *(set + i) && *(set + i + 1) == '\0')
-			return (s1_len);
-		if (*(s1 + s1_len) == *(set + i))
-		{
-			s1_len--;
-			i = -1;
-		}
+		if (ft_strchr(set, s1[len - i - 1]) == 0)
+			break ;
 		i++;
 	}
-	return (0);
+	return (len - i);
 }
 
 char				*ft_strtrim(char const *s1, char const *set)
 {
 	char		*str;
-	size_t		begin;
-	size_t		end;
-	size_t		str_len;
+	int			begin;
+	int			end;
+	int			str_len;
 
 	if (!s1)
 		return (NULL);
 	if (!set)
 		return (ft_strdup(s1));
 	begin = find_begin(s1, set);
-	if (begin == (size_t)ft_strlen(s1))
-		return (ft_strdup(""));
 	end = find_end(s1, set);
-	str_len = end - begin + 2;
+	if (begin >= end)
+		return (ft_strdup(""));
+	str_len = end - begin + 1;
 	if (!(str = (char *)malloc(sizeof(char) * str_len)))
 		return (ft_strdup(""));
 	ft_strlcpy(str, s1 + begin, str_len);
