@@ -6,7 +6,7 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:14:49 by jyou              #+#    #+#             */
-/*   Updated: 2020/11/11 16:02:09 by jyou             ###   ########.fr       */
+/*   Updated: 2020/11/11 20:01:31 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static size_t		get_arr_len(char const *s, char c)
 	i = 0;
 	if (!s[0])
 		return (0);
-	while (s[i] == c)
+	while (s[i] && s[i] == c)
 		i++;
 	while (s[i])
 	{
 		if (s[i] == c)
 		{
 			count++;
-			while (s[i] == c)
+			while (s[i] && s[i] == c)
 				i++;
 		}
 		else
@@ -44,7 +44,7 @@ static size_t		get_str_len(char *next_str, char c, size_t start)
 	int		i;
 
 	i = 0;
-	while (*(next_str + i + start) == c)
+	while (*(next_str + i + start) && *(next_str + i + start) == c)
 		start++;
 	while (*(next_str + start + i))
 	{
@@ -76,7 +76,7 @@ char				**ft_split(char const *s, char c)
 	size_t			i;
 	size_t			start;
 
-	if (!s || !c)
+	if (!s)
 		return (NULL);
 	if (!(arr = (char **)malloc(sizeof(char *) * (get_arr_len(s, c) + 1))))
 		return (NULL);
@@ -85,7 +85,7 @@ char				**ft_split(char const *s, char c)
 	str = (char *)s;
 	while (++i < get_arr_len(s, c))
 	{
-		while (str[start] == c)
+		while (str[start] && str[start] == c)
 			start++;
 		if (!(arr[i] = (char *)malloc(sizeof(char)
 						* (get_str_len(str, c, start) + 1))))

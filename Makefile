@@ -6,12 +6,12 @@
 #    By: jyou <jyou@student.42.kr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/10 19:57:41 by jyou              #+#    #+#              #
-#    Updated: 2020/11/09 16:13:35 by jyou             ###   ########.fr        #
+#    Updated: 2020/11/11 19:16:20 by jyou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
-CFLAGS	= -Wall -Werror -Wextra -I.
+CFLAGS	= -Wall -Werror -Wextra
 SRCS	= ft_memset.c \
 		  ft_bzero.c  \
 		  ft_memcpy.c \
