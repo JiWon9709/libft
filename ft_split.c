@@ -6,13 +6,13 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:14:49 by jyou              #+#    #+#             */
-/*   Updated: 2020/11/11 20:42:17 by jyou             ###   ########.fr       */
+/*   Updated: 2020/11/12 20:40:30 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t		get_arr_len(char const *s, char c)
+static int			get_arr_len(char const *s, char c)
 {
 	size_t		count;
 	int			i;
@@ -39,7 +39,7 @@ static size_t		get_arr_len(char const *s, char c)
 	return (count);
 }
 
-static size_t		get_str_len(char *next_str, char c, size_t start)
+static int			get_str_len(char *next_str, char c, size_t start)
 {
 	int		i;
 
@@ -73,8 +73,8 @@ char				**ft_split(char const *s, char c)
 {
 	char			**arr;
 	char			*str;
-	size_t			i;
-	size_t			start;
+	int				i;
+	int				start;
 
 	if (!s)
 		return (NULL);

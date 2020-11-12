@@ -6,7 +6,7 @@
 /*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 17:03:10 by jyou              #+#    #+#             */
-/*   Updated: 2020/11/11 20:41:06 by jyou             ###   ########.fr       */
+/*   Updated: 2020/11/12 20:43:18 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*sub;
 	unsigned int	s_len;
+	unsigned int	i;
 
 	if (!s)
 		return (NULL);
@@ -24,7 +25,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = 0;
 	if (!(sub = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	ft_memmove(sub, s + start, len);
+	i = 0;
+	while (i < len)
+	{
+		sub[i] = *(s + start + i);
+		i++;
+	}
 	*(sub + len) = '\0';
 	return (sub);
 }
