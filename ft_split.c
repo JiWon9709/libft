@@ -6,7 +6,7 @@
 /*   By: jyou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:14:49 by jyou              #+#    #+#             */
-/*   Updated: 2020/11/12 20:40:30 by jyou             ###   ########.fr       */
+/*   Updated: 2020/11/13 20:02:04 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int			get_arr_len(char const *s, char c)
 {
-	size_t		count;
+	int			count;
 	int			i;
 
 	count = 0;

@@ -6,7 +6,7 @@
 /*   By: jyou <jyou@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 17:03:10 by jyou              #+#    #+#             */
-/*   Updated: 2020/11/12 20:43:18 by jyou             ###   ########.fr       */
+/*   Updated: 2020/11/13 20:31:38 by jyou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*sub;
 	unsigned int	s_len;
-	unsigned int	i;
 
 	if (!s)
 		return (NULL);
 	s_len = ft_strlen(s);
 	if (s_len < start)
-		len = 0;
+		return (ft_strdup(""));
 	if (!(sub = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		sub[i] = *(s + start + i);
-		i++;
-	}
-	*(sub + len) = '\0';
+	ft_strlcpy(sub, s + start, len + 1);
 	return (sub);
 }
